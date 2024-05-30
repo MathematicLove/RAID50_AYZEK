@@ -198,7 +198,12 @@ def menu():
                 print("Ошибка! Строка должна быть в 10 байт.")
                 continue
             index = int(input(f"Введите индекс от нуля до {raid50.max_layers - 1}: "))
-            raid50.write(data, index)
+            if index < 0:
+                print("Ошибка! Индекс должен быть больше нуля!")
+                continue
+            else:
+                raid50.write(data, index)
+            continue
         elif choice == "2":
             written_indices = raid50.get_written_indices()
             if not written_indices:
